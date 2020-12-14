@@ -11,4 +11,18 @@ router.get("/", (req, res) => {
     .catch(err => console.log(err))
 })
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params
+
+  Quotes.fetchQuoteById(id)
+    .then(quote => {
+      console.log("QUOTE", quote)
+      res.status(200).json(quote)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json(quote)
+    })
+})
+
 module.exports = router;
