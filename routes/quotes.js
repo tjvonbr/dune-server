@@ -16,12 +16,10 @@ router.get("/:id", (req, res) => {
 
   Quotes.fetchQuoteById(id)
     .then(quote => {
-      console.log("QUOTE", quote)
       res.status(200).json(quote)
     })
     .catch(err => {
-      console.log(err)
-      res.status(500).json(quote)
+      res.status(500).json({ message: "Sorry, but there was a problem fetching this quote!" })
     })
 })
 
